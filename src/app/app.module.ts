@@ -12,6 +12,7 @@ import { StoreFirstGuard } from './storeFirst.guard';
   imports: [BrowserModule, StoreModule,
     RouterModule.forRoot([
       { 
+
         path: "store", component: StoreComponent,
         canActivate: [StoreFirstGuard]
       },
@@ -21,6 +22,11 @@ import { StoreFirstGuard } from './storeFirst.guard';
       },
       { 
         path: "checkout", component: CheckoutComponent,
+        canActivate: [StoreFirstGuard]
+      },
+      {
+        path: "admin",
+        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
         canActivate: [StoreFirstGuard]
       },
       { path: "**", redirectTo: "/store" }
