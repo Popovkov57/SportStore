@@ -41,7 +41,8 @@ export class ProductRepository {
 
     deleteProduct(id: number) {
         this.dataSource.deleteProduct(id).subscribe(p => {
-            this.products.slice(this.products.findIndex(p => p.id == id), 1);
+            let index = this.products.findIndex(p => p.id == id);
+            this.products.splice(index, 1);
         });
     }
 }
