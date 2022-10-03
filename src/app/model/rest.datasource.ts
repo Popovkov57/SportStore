@@ -26,7 +26,6 @@ export class RestDataSource {
     }
 
     saveOrder(order: Order): Observable<Order> {
-        console.log(JSON.stringify(order));
         return this.http.post<Order>(this.baseUrl + "orders", order);
     }
 
