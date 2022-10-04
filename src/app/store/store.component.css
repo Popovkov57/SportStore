@@ -1,0 +1,22 @@
+.categoriesButton {
+    color: #5B588C;
+    border-color: #5B588C;
+}
+.categoriesButton:hover {
+    color: white;
+    background-color: #5B588C;
+    border-color: #5B588C;
+}
+.categoriesButton.active {
+    color: white;
+    background-color: #5B588C !important;
+    border-color: #5B588C;
+}
+.categoriesButton:focus {
+    color: white;
+    background-color: #5B588C;
+    border-color: #5B588C;
+}
+.productTitle {
+    color: #2a215ed1;
+}
