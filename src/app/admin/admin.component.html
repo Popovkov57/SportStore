@@ -1,27 +1,27 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col bg-dark text-white">
-            <a class="navbar-brand">SPORTS STORE Admin</a>
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-3">
-            <div class="d-grid gap-2">
-                <button class="btn btn-outline-info btn-block"
-                    routerLink="/admin/main/products" routerLinkActive="active">
-                    Products
-                </button>
-                <button class="btn btn-outline-info btn-block"
-                    routerLink="/admin/main/orders" routerLinkActive="active">
-                    Orders
-                </button>
-                <button class="btn btn-outline-danger btn-block"
-                    (click)="logout()">
-                    Logout
-                </button>
+    <nav class="navbar fixed-top bg-light" style="background-color: #6768AA !important;">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" routerLink="/store">Sports Store</a>
+            <div class="float-end">
+                <a routerLink="/cart" style="color: white;padding-right: 15px;">
+                    <i class="fa fa-sign-out" aria-hidden="true" (click)="logout()"></i>
+                </a>
             </div>
         </div>
-        <div class="col-9">
+    </nav>
+</div>
+
+<div class="container-fluid" style="padding-top: 60px;">
+    <div class="row mt-2">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" routerLink="/admin/main/products" routerLinkActive="active" aria-current="page" href="#">Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/admin/main/orders" routerLinkActive="active">Orders</a>
+            </li>
+        </ul>
+        <div>
             <router-outlet></router-outlet>
         </div>
     </div>

@@ -1,9 +1,11 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col bg-dark text-white">
-            <a class="navbar-brand">SPORTS STORE</a>
+    <nav class="navbar fixed-top bg-light" style="background-color: #6768AA !important;">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" routerLink="/store">Sports Store</a>
         </div>
-    </div>
+    </nav>
+</div>
+<div class="container-fluid" style="padding-top: 60px;">
     <div class="row">
         <div class="col mt-2">
             <h2 class="text-center">Your Cart</h2>
@@ -57,8 +59,8 @@
     </div>
     <div class="row">
         <div class="col">
-            <div class="text-center">
-                <button class="btn btn-primary m-1" routerLink="/store">
+            <div class="float-end">
+                <button class="btn btn outline m-1 text-white" routerLink="/store" style="background-color: #5B588C;">
                     Continue Shopping
                 </button>
                 <button class="btn btn-secondary m-1" routerLink="/checkout" [disabled]="cart.lines.length == 0 && connected">
