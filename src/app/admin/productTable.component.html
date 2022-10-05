@@ -1,30 +1,33 @@
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped mt-2">
     <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th></th>
+        <tr class="d-flex">
+            <th class="col-1">ID</th>
+            <th class="col-4">Name</th>
+            <th class="col-4">Category</th>
+            <th class="col-2">Price</th>
+            <th class="col-1"></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let product of getProducts()">
-            <td>{{ product.id }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.category }}</td>
-            <td>{{ product.price | currency:"USD":"symbol":"2.2-2" }}</td>
-            <td>
-                <button class="btn btn-sm btn-warning" [routerLink]="['/admin/main/products/edit', product.id]">
-                    Edit
-                </button>
-                <button class="btn btn-sm btn-danger" (click)="deleteProduct(product.id)">
-                    Delete
-                </button>
+        <tr *ngFor="let product of getProducts()" class="d-flex">
+            <td class="col-1">{{ product.id }}</td>
+            <td class="col-4">{{ product.name }}</td>
+            <td class="col-4">{{ product.category }}</td>
+            <td class="col-2">{{ product.price | currency:"USD":"symbol":"2.2-2" }}</td>
+            <td class="col-1">
+                <div class="btn-group float-end" role="group" aria-label="Basic example">
+                    <button class="btn btn-sm btn-warning" [routerLink]="['/admin/main/products/edit', product.id]">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn btn-sm btn-danger" (click)="deleteProduct(product.id)">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </button>
+                </div>
             </td>
         </tr>
     </tbody>
 </table>
-<button class="btn btn-primary" routerLink="/admin/main/products/create">
+<button class="btn btn-primary float-end" style="background-color: #6768A9;border-color: #6768A9;" routerLink="/admin/main/products/create">
+    <i class="fa fa-plus" aria-hidden="true"></i>
     Create New Product
 </button>
