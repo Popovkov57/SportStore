@@ -4,30 +4,52 @@
         Display Shipped Orders
     </label>
 </div>
-<div class="table table-sm">
+<table class="table table-sm table-striped">
     <thead>
-        <tr><th>Name</th><th>Zip</th><th colspan="2">Cart</th><th></th></tr>
+        <tr class="d-flex">
+            <th class="col-1">Id</th>
+            <th class="col-2">Name</th>
+            <th class="col-2">Address</th>
+            <th class="col-5">Cart</th>
+            <th class="col-2"></th>
+        </tr>
     </thead>
     <tbody>
-        <tr *ngIf="getOrders().length == 0">
-            <td colspan="5">There are no orders</td>
+        <tr *ngFor="let o of getOrders()" class="d-flex">
+            <td class="col-1">{{ o.id }}</td>
+            <td class="col-2">{{ o.name }}</td>
+            <td class="col-2">
+                {{ o.address}}
+                <br>{{ o.zip}} - {{ o.city }}
+                <br>{{ o.state }}
+                <br>{{ o.country }}
+            </td>
+            <td class="col-5">
+                <div *ngFor="let line of o.cart.lines" class="d-flex">
+                    <td class="col-4">
+                        {{ line.product.name }}
+                        <br><span style="color: #00000087;">{{ line.product.price | currency:"USD":"symbol":"2.2-2" }}</span>
+                    </td>
+                    <td class="col-4 my-auto">
+                        {{ line.quantity }}
+                    </td>
+                    <td class="col-4 my-auto">
+                        {{ line.quantity*line.product.price | currency:"USD":"symbol":"2.2-2" }}
+                    </td>
+                </div>
+                <div class="d-flex" style="margin-top: 10px;">
+                    <th class="col-8">Total</th>
+                    <th class="col-4">
+                        {{ o.cart.cartPrice | currency:"USD":"symbol":"2.2-2" }}
+                    </th>
+                </div>
+            </td>
+            <td class="col-2">
+                <div class="btn-group float-end" role="group" aria-label="Basic example">
+                    <button class="btn btn-warning" (click)="markShipped(o)"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                    <button class="btn btn-danger" (click)="delete(o.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </div>
+            </td>
         </tr>
-        <ng-template ngFor let-o [ngForOf]="getOrders()">
-            <tr>
-                <td>{{o.name}}</td>
-                <td>{{o.zip}}</td>
-                <th>Product</th>
-                <th>Quantity</th>
-                <td>
-                    <button class="btn btn-warning" (click)="markShipped(o)">Ship</button>
-                    <button class="btn btn-danger" (click)="delete(o.id)">Delete</button>
-                </td>
-            </tr>
-            <tr *ngFor="let line of o.cart.lines">
-                <td colspan="2"></td>
-                <td>{{line.product.name}}</td>
-                <td>{{line.quantity}}</td>
-            </tr>
-        </ng-template>
     </tbody>
-</div>
+</table>

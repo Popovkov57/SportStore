@@ -37,7 +37,7 @@
                             {{ line.product.price | currency:"USD":true:"2.2-2" }}
                         </td>
                         <td class="text-right">
-                            {{ line.lineTotal | currency:"USD":true:"2.2-2" }}
+                            {{ line.quantity*line.product.price | currency:"USD":true:"2.2-2" }}
                         </td>
                         <td class="text-center">
                             <button class="btn btn-sm btn-danger" (click)="cart.removeLine(line.product.id)">
