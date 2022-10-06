@@ -52,7 +52,7 @@ export class Cart {
 export class CartLine {
     constructor(public product: Product, public quantity: number) {}
 
-    get lineTotal() {
+    getLineTotal() {
         return this.quantity * this.product.price;
     }
 }
